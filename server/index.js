@@ -7,6 +7,7 @@ const mainRoute = require("./controllers/server");
 
 dotenv.config();
 
+app.use(express.json()); 
 app.use("/api", mainRoute);
 
 const connect = async () => {

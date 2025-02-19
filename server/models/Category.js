@@ -6,7 +6,7 @@ const CategorySchema = mongoose.Schema(
         img : {type : String, required : true}
     },
     {
-        timestamps : true
+        timestamps : true 
     }
 );
 
