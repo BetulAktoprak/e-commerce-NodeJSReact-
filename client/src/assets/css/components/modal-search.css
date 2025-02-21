@@ -14,7 +14,12 @@
   transition: 0.3s ease all;
 }
 
-.modal-search::after {
+.show{
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-overlay {
   content: "";
   width: 100%;
   height: 100%;
