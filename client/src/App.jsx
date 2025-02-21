@@ -1,23 +1,25 @@
 import './App.css'
-import Brands from './components/layout/brands/Brands'
-import CampaignSingle from './components/layout/campaign/CampaignSingle'
-import Footer from './components/layout/footer/Footer'
-import Header from './components/layout/header/Header'
-import Policy from './components/layout/policy/Policy'
-import SingleProduct from './pages/SingleProduct'
+// import Cart from './pages/Cart'
+// import Contact from './pages/Contact'
+// import Shop from './pages/Shop'
 // import Home from './pages/Home'
+import SingleProduct from './pages/SingleProduct'
+// import SingleBlog from './pages/SingleBlog'
+// import Account from './pages/Account';
+// import Blog from './pages/Blog';
 
 function App() {
 
   return (
     <>
-      <Header />
       {/* <Home /> */}
+      {/* <Account /> */}
+      {/* <Blog /> */}
+      {/* <Cart /> */}
+      {/* <Contact /> */}
+      {/* <Shop /> */}
+      {/* <SingleBlog /> */}
       <SingleProduct />
-      <Brands />
-      <CampaignSingle />
-      <Policy />
-      <Footer />
     </>
   )
 }
