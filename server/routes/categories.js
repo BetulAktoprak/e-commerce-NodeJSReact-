@@ -1,6 +1,6 @@
 const express = require("express");
 const Category = require("../models/Category");
-const genericController = require("../controllers/genericController");
+const genericController = require("./genericController");
 
 const router = express.Router();
 const categoryController = genericController(Category);
