@@ -12,8 +12,7 @@ function CreateCategory() {
     const createCategory = async (values) => {
         try {
             await api.post("/categories", values);
-            toast.success("Kategori Başarıyla Eklendi!");
-            console.log("Kategori başarıyla eklendi")
+            toast.success("Kategori başarıyla eklendi!");
             navigate("/admin/categories");
         } catch (error) {
             console.error("Hata Detayı:", error.response?.data);
@@ -22,6 +21,8 @@ function CreateCategory() {
     }
     return (
         <>
+        <h2>Create Category Panel</h2>
+        <hr /><br />
             <Form
                 layout={formLayout}
                 form={form}
