@@ -12,6 +12,7 @@ import CreateCategory from './pages/Admin/Categories/CreateCategory';
 import { ToastContainer, Slide } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import './App.css'
+import UserList from './pages/Admin/Users/UserList';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/admin/*' >
           <Route path='categories' element={<CategoryList />} />
           <Route path='category/create' element={<CreateCategory />} />
+          <Route path='users' element={<UserList />} />
         </Route>
       </Routes>
     </>

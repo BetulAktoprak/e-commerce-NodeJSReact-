@@ -1,25 +1,29 @@
-import { Button, Form, Input, Modal } from "antd";
-import api from "../../../services/api";
+import { Button, Form, Input, Modal } from "antd"
 import { toast } from "react-toastify";
+import api from "../../../services/api";
 import { useEffect } from "react";
 
-function UpdateCategoryModal({ isModalOpen, setIsModalOpen, selectedCategory, getCategories }) {
+function UpdateUserModal({ isModalOpen, setIsModalOpen, selectedUser, getUsers, setDataList }) {
 
     const [form] = Form.useForm();
 
     useEffect(() => {
-        if (selectedCategory) {
-            form.setFieldsValue(selectedCategory);
+        if (selectedUser) {
+            form.setFieldsValue(selectedUser);
         }
-    }, [selectedCategory]);
+    }, [selectedUser]);
 
     const handleUpdate = async () => {
         try {
             const values = await form.validateFields();
-            await api.put(`/categories/${selectedCategory._id}`, values);
-            toast.success("Kategori başarıyla güncellendi!");
+            await api.put(`/users/${selectedUser._id}`, values);
+            toast.success("Kullanıcı başarıyla güncellendi!");
+
             setIsModalOpen(false);
-            getCategories();
+            setDataList((prevList) => prevList.map(user =>
+                user._id === selectedUser._id ? { ...user, ...values } : user
+            ));
+            getUsers();
         } catch (error) {
             toast.error(error.response?.data?.error || "Güncelleme sırasında hata oluştu.");
         }
@@ -28,7 +32,7 @@ function UpdateCategoryModal({ isModalOpen, setIsModalOpen, selectedCategory, ge
     return (
         <>
             <Modal
-                title="Update Category"
+                title="Update User"
                 open={isModalOpen}
                 onCancel={() => setIsModalOpen(false)}
                 footer={[
@@ -37,10 +41,13 @@ function UpdateCategoryModal({ isModalOpen, setIsModalOpen, selectedCategory, ge
                 ]}
             >
                 <Form form={form} layout='vertical'>
-                    <Form.Item name="name" label="Category Name" rules={[{ required: true, message: "Enter the category name!" }]}>
+                    <Form.Item name="username" label="User Name" rules={[{ required: true, message: "Enter the user name!" }]}>
                         <Input />
                     </Form.Item>
-                    <Form.Item name="img" label="Image URL">
+                    <Form.Item name="email" label="Email" rules={[{ required: true, message: "Enter the email!" }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item name="role" label="Role" >
                         <Input />
                     </Form.Item>
                 </Form>
@@ -49,4 +56,4 @@ function UpdateCategoryModal({ isModalOpen, setIsModalOpen, selectedCategory, ge
     )
 }
 
-export default UpdateCategoryModal
+export default UpdateUserModal

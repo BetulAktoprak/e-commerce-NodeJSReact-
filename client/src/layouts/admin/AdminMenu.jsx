@@ -7,8 +7,7 @@ import {
     BarcodeOutlined,
     AppstoreAddOutlined,
     UnorderedListOutlined,
-    PlusCircleOutlined,
-    UserAddOutlined
+    PlusCircleOutlined
 } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
 
@@ -92,15 +91,6 @@ function AdminMenu() {
                     path : "/admin/users",
                     onClick: () => {
                         navigate("/admin/users")
-                    }
-                },
-                {
-                    key : "4-2",
-                    icon : <UserAddOutlined />,
-                    label : "Add User",
-                    path : "/admin/user/create",
-                    onClick: () => {
-                        navigate("/admin/user/create")
                     }
                 }
             ]

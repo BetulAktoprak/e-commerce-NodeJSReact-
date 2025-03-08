@@ -35,14 +35,14 @@ function CategoryList() {
         {
             title: 'Image',
             dataIndex: 'img',
-            width: "25%",
+            width: "40%",
             render: (img, record) => (<img alt={`/${record.img}`} src={`/${record.img}`} style={{ width: "90px" }} />)
         },
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            width: "50%"
+            width: "40%"
         },
         {
             title: "Process",
