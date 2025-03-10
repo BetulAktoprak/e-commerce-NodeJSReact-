@@ -8,21 +8,20 @@ function CreateCategory() {
     const formLayout = "vertical";
 
     const navigate = useNavigate();
-   
+
     const createCategory = async (values) => {
         try {
             await api.post("/categories", values);
             toast.success("Kategori başarıyla eklendi!");
             navigate("/admin/categories");
         } catch (error) {
-            console.error("Hata Detayı:", error.response?.data);
             toast.error(error.response?.data?.error || "Bir hata oluştu..");
         }
     }
     return (
         <>
-        <h2>Create Category Panel</h2>
-        <hr /><br />
+            <h2>Create Category Panel</h2>
+            <hr /><br />
             <Form
                 layout={formLayout}
                 form={form}
@@ -39,6 +38,7 @@ function CreateCategory() {
                 </Form.Item>
             </Form>
         </>
+
     )
 }
 

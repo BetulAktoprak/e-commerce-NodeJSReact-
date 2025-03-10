@@ -13,6 +13,8 @@ import { ToastContainer, Slide } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import './App.css'
 import UserList from './pages/Admin/Users/UserList';
+import ProductList from './pages/Admin/Products/ProductList';
+import CreateProduct from './pages/Admin/Products/CreateProduct';
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
         <Route path='/admin/*' >
           <Route path='categories' element={<CategoryList />} />
           <Route path='category/create' element={<CreateCategory />} />
+          <Route path='products' element={<ProductList />} />
+          <Route path='product/create' element={<CreateProduct />} />
           <Route path='users' element={<UserList />} />
         </Route>
       </Routes>
