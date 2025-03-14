@@ -1,6 +1,7 @@
 import { Button } from "antd";
 
-const Columns = () => [
+
+const Columns = (openUpdateModal) => [
     {
         title: 'Images',
         dataIndex: 'images',
@@ -83,9 +84,9 @@ const Columns = () => [
         title: "Process",
         key: "process",
         width: "15%",
-        render: () => (
+        render: (colors, sizes, record) => (
             <div style={{ display: "flex", flexDirection:"column", gap:"10px",  padding:"15px" }}>
-                <Button color='cyan' variant='solid' >Update</Button>
+                <Button color='cyan' variant='solid' onClick={() => openUpdateModal(colors, sizes, record)} >Update</Button>
                 <Button color='danger' variant='solid' >Delete</Button>
             </div>
         )

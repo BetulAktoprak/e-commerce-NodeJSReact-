@@ -1,5 +1,22 @@
+import { useEffect, useState } from "react"
+import api from '../../../services/api';
+import { toast } from 'react-toastify';
 
 function Categories() {
+    const [categories, setCategories] = useState([]);
+
+
+    useEffect(() => {
+        const getCategories = async () => {
+            try {
+                const response = await api.get("/categories");
+                setCategories(response.data);
+            } catch (error) {
+                toast.error(error.response.data.error || "Bir hata oluştu..");
+            }
+        }
+        getCategories();
+    }, []);
     return (
         <>
             <section className="categories">
@@ -9,42 +26,16 @@ function Categories() {
                         <p>Summer Collection New Morden Design</p>
                     </div>
                     <ul className="category-list">
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories1.png" alt className="category-image" />
-                                <span className="category-title">Smartphone</span>
-                            </a>
-                        </li>
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories2.png" alt className="category-image" />
-                                <span className="category-title"> Watches </span>
-                            </a>
-                        </li>
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories3.png" alt className="category-image" />
-                                <span className="category-title"> Electronics </span>
-                            </a>
-                        </li>
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories4.png" alt className="category-image" />
-                                <span className="category-title"> Furnitures </span>
-                            </a>
-                        </li>
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories5.png" alt className="category-image" />
-                                <span className="category-title"> Collections </span>
-                            </a>
-                        </li>
-                        <li className="category-item">
-                            <a href="#">
-                                <img src="img/categories/categories6.png" alt className="category-image" />
-                                <span className="category-title"> Fashion </span>
-                            </a>
-                        </li>
+                        {
+                            categories.map(category => (
+                                <li key={category._id} className="category-item">
+                                    <a href="#">
+                                        <img src={category.img} alt={category.name} className="category-image" />
+                                        <span className="category-title">{category.name}</span>
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </section>
